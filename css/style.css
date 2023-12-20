@@ -1,0 +1,105 @@
+*
+{
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+}
+html{
+    height: 100%;
+}
+body
+{
+    min-height: 100%;
+}
+/* Iniciamos el maquetado para la versión celular */
+.grid-container > *
+{
+    box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+}
+.grid-container
+{
+    display: grid;
+    gap: 10px;
+    /* grid-template-areas: 
+    'header'
+    'navbar'
+    'main'
+    'sidebar'
+    'footer'; */
+
+    /* Otra forma de hacerlo para la versión movil*/
+    /* las dimensiones a  la derecha son el acho de las filas*/
+        grid-template: 
+        'header' 100px
+        'navbar'  50px
+        'main'    auto
+        'sidebar' 100px
+        'footer'  100px;  
+}
+.header
+{
+    grid-area: header;
+    background-color: aqua;
+}
+.navbar
+{
+    grid-area: navbar;
+    background-color: rgb(215, 134, 231);
+}
+.main
+{
+    grid-area: main;
+    background-color: rgb(248, 119, 119);
+}
+.sidebar
+{
+    grid-area: sidebar;
+    background-color: rgb(252, 250, 145);
+}
+.footer
+{
+    grid-area: footer;
+    background-color: rgb(164, 245, 148);
+}
+
+@media (min-width: 600px) { /* Maquetado para el diseño table */
+    .grid-container{
+        /* Ajustar el ancho de las columnas*/
+        /* grid-template-columns: 200px auto;  */
+
+        /* Ajustar el alto de las filas*/
+        /* grid-template-rows: 100px 50px auto 100px; */
+
+        /* Colocar los elementos en la fila correcta */
+        /* grid-template-areas: 
+        'header header'
+        'navbar navbar'
+        'sidebar main'
+        'footer footer'; */
+        
+        /* Otra forma de hacerlo  más sencilla*/
+        grid-template:
+        'header header' 100px /* Filas*/
+        'navbar navbar'  50px
+        'sidebar main'   auto
+        'footer footer'   100px /
+          200px  auto; /* Columnas*/
+    }
+}
+
+@media (min-width: 900px) { /* Maquetado para el diseño de Escritorio */
+    .grid-container{        
+        grid-template:
+        'header header header'  100px
+        'navbar main   sidebar' auto
+        'footer footer footer'  100px /
+         200px  auto   200px; /* Columnas*/
+    }
+
+}
+/* https://www.youtube.com/watch?v=T4t00Hd3qZc */
